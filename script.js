@@ -1,7 +1,4 @@
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-);
+
 
 class App extends React.Component {
   constructor() {
@@ -37,13 +34,13 @@ class App extends React.Component {
             value={this.state.searchText}
           />
         </form>
-        <userList users={this.state.users}/>
+        <UsersList users={this.state.users}/>
       </div>
     );
   }
 }
 
-class UsersList extends react.Component {
+class UsersList extends React.Component {
   get users() {
     return this.props.users.map(user => <User key={user.id} user={user}/>);
   }
@@ -57,13 +54,18 @@ class UsersList extends react.Component {
   }
 }
 
-class User extends react.Component {
+class User extends React.Component {
   render () {
     return (
-      <div>
+      <div className='user'>
         <img src={this.props.user.avatar_url} style={{maxWidth: '100px'}}/>
         <a href={this.props.user.html_url} target="_blank">{this.props.user.login}</a>
       </div>
     );
   }
 }
+
+ReactDOM.render(
+  <App />,
+  document.getElementById('root')
+);
